@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.navigation.NavType
+import com.example.fishka.ui.screens.CatchDetailScreen
 
 sealed class Screen(val route: String) {
     data object FishList : Screen("fish_list")
@@ -15,6 +16,9 @@ sealed class Screen(val route: String) {
         fun createRoute(fishId: Int) = "fish_detail/$fishId"
     }
     data object AddCatch: Screen("add_catch")
+    object CatchDetail: Screen("catchDetail/{fishId}") {
+        fun createRoute(fishId: Int) = "catchDetail/$fishId"
+    }
 }
 
 @Composable
@@ -39,6 +43,13 @@ fun NavGraph(navController: NavHostController, modifier: Modifier = Modifier) {
         }
         composable(Screen.AddCatch.route) {
             com.example.fishka.ui.screens.AddCatchScreen(navController)
+        }
+        composable(
+            Screen.CatchDetail.route,
+            arguments = listOf(navArgument("fishId") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val fishId = backStackEntry.arguments!!.getInt("fishId")
+            CatchDetailScreen(fishId, navController)
         }
     }
 }

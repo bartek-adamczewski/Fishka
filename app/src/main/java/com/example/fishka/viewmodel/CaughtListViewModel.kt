@@ -1,10 +1,11 @@
 package com.example.fishka.viewmodel
 
-import com.example.fishka.entity.CaughtFish
+import com.example.fishka.database.entity.CaughtFish
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fishka.database.CaughtFishDatabase
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
@@ -22,5 +23,9 @@ class CaughtListViewModel(application: Application) : AndroidViewModel(applicati
 
     fun deleteCaughtFish(fish: CaughtFish) = viewModelScope.launch {
         dao.delete(fish)
+    }
+
+    fun getCatchById(id: Int): Flow<CaughtFish?> {
+        return dao.getCatchById(id)
     }
 }

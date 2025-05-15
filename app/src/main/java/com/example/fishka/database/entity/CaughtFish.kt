@@ -1,4 +1,4 @@
-package com.example.fishka.entity
+package com.example.fishka.database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

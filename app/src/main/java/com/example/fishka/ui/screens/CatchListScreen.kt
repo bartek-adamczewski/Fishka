@@ -1,5 +1,6 @@
 package com.example.fishka.ui.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -35,6 +36,9 @@ fun CatchListScreen(navController: NavHostController) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp)
+                        .clickable {
+                            navController.navigate(Screen.CatchDetail.createRoute(c.id))
+                        }
                 ) {
                     Row(
                         Modifier
@@ -49,9 +53,7 @@ fun CatchListScreen(navController: NavHostController) {
                                 modifier = Modifier.size(64.dp)
                             )
                         }
-                        Column(
-                            modifier = Modifier.weight(1f)
-                        ) {
+                        Column(modifier = Modifier.weight(1f)) {
                             Text(
                                 text = c.name,
                                 style = MaterialTheme.typography.titleLarge,

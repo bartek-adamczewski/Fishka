@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.fishka.entity.CaughtFish
+import com.example.fishka.database.entity.CaughtFish
 
 @Database(entities = [CaughtFish::class], version = 1)
 abstract class CaughtFishDatabase : RoomDatabase() {

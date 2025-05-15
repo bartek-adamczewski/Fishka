@@ -16,7 +16,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
-import com.example.fishka.entity.CaughtFish
+import com.example.fishka.database.entity.CaughtFish
 import com.example.fishka.viewmodel.CaughtListViewModel
 import java.io.File
 
